@@ -9,7 +9,7 @@ The era of climate change’s unpredictability necessitates understanding extrem
  (3) What environmental predictors are the most important for predicting the extreme flux syndromes inside and outside of the growing season, and do these align across flux types (GPP, Reco)? 
  (4) Determine how timescales of importance vary between predicting GPP and Reco extremes and across their growing seasons.
 
-# Work in progress.
+## Work in progress.
 With current results:
 - Create 2D partial dependence plots that look at current temperature at different categorical levels of year-lagged temperature. Seperately, their PDP's show opposite patters, which could point to photosynthetic acclimation OR just site differentiation.
 Before rerunning models:
@@ -65,7 +65,7 @@ For each of these models, there exists the following files:
 - **model.results.R OR .RData OR .rds**: The saved model output. There was problems with Monsoon producing corrupted files, so some are saved in different formats.
 - **model.results.csv**: The output of interest organized and exported into a csv.
 
-# Analysis
+## Analysis
 
-# Previous Models
+## Previous Models
 
