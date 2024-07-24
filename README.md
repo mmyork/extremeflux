@@ -9,6 +9,17 @@ The era of climate change’s unpredictability necessitates understanding extrem
  (3) What environmental predictors are the most important for predicting the extreme flux syndromes inside and outside of the growing season, and do these align across flux types (GPP, Reco)? 
  (4) Determine how timescales of importance vary between predicting GPP and Reco extremes and across their growing seasons.
 
+# Work in progress.
+With current results:
+- Create 2D partial dependence plots that look at current temperature at different categorical levels of year-lagged temperature. Seperately, their PDP's show opposite patters, which could point to photosynthetic acclimation OR just site differentiation.
+Before rerunning models:
+- (1) Removing additional dates discovered that need to be dropped from the data.
+- (2) Add the PRISM climate averages for each site in order to remove 365 lag importance soaking up site differentiation.
+- (3) Redefine growing season using historical average so that each year has only one growing season. Will need to rewrite historical season splitting function.
+- (4) Redefine inactive state with hard threshold set for both GPP and Reco. Will need to rewrite inactive function.
+- (5) Include SWC in the data.
+- (6) Run models on low/high GPP, low/high Reco, and inactive state across in, out, and combined seasons. (15 models in all)
+
 ## Workflow
 ### Identify flux towers sites to focus on.
 The fluxnet 2015 dataset was used, along with the addition of 7 seperately loaded sites located in NM and AZ (Seg,Ses,Mpj,Wjs,Vcp,Vcs,& Sr). Loading and editing of this data in preparation for modeling is done in **flux2015.model.R** and datasets can be found under the Data folder. Variables of interest are temperature (TA), precipitation (P), vapor pressure deficit (VPD), shortwave radiation (SW), net ecosystem exchange (NEE), and gross primary production (GPP). Sites with less than two years of data were removed. Reco was calculated using as Reco=GPP+NEE, and any dates with autofilled or questionable measurements were removed. Calibration periods for the fluxnet 2015 were present in almost all 50ish sites, so a function (**find_calibration.R**) was made that picks up on these patterns and isolates date ranges to be deleted. These dates were manually reviewed and edited in **dropDates.R**, such that loading this file provides all the dates to be removed from each site.
@@ -53,3 +64,8 @@ For each of these models, there exists the following files:
 - **model.sh**: the shell script to run model.R in Monsoon
 - **model.results.R OR .RData OR .rds**: The saved model output. There was problems with Monsoon producing corrupted files, so some are saved in different formats.
 - **model.results.csv**: The output of interest organized and exported into a csv.
+
+# Analysis
+
+# Previous Models
+
