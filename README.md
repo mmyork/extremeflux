@@ -27,7 +27,27 @@ GPP and Reco are divided into low/typical/high categories using the function in 
 Something to keep in mind is that, logistically, the out of season strong sink doesn't provide meaningful information since both these terms are defined by GPP; it just picks up on shoulder seasons. Additionally, inactive states only makes sense over the combined data.
 * **Future note**: With the previous statement in mind, we will be redirecting out focus to running models on low AND high GPP and Reco across all the seasonal and combined datasets, rather than just high. The definition of inactive state may receive a revamp, since its current definition could allow Reco values to vary significantly. Instead, this function needs to be rewritten to place hard thresholds on GPP and Reco, whether or not that results in 5% of the data being in the inactive state or not.
 
-### 
+### Add timescale variables.
+Timescale variables were created using the function in **add_lag.R**. This function takes the dataframe, vector of variables you want to add lags to, and the number of days Y you want the lag to be. For each day X of interest and at each site separately, it takes the range of dates from Y before X to the day before X. For example, if its 01/08/2024 and we are using a lag of 7, it would isolate the date range of 01/01/2024-01/07/2024. It then calculates the average and standard deviation (if the lag is greater than 1 day) of the variables of interest with dates inside that range and located at that site. The most recent add_lag() function allows these values to be calculated as long as less than 30% of the data for a variable in that date range is NA, allowing for less missing lag values for longer month and year long lags. Previous functions exist in the same file: one that doesn't permit any missing values in the lag and another that calculates a weighted lag with days closer to X being weighted heavier than those futher in the average (this hasn't been used).
 
+For this project, we are using timescales of 0 (concurrent), 1 (previous day), 7 (previous week), 30 (previous month), and 365 (previous year) for TA, P, VPD, and SW. Overall this creates: (4 variables x 5 timescale averages) + (4 variables x 3 timescale standard deviations) + site = 33 total variables for model input. 
 
+In earlier models, when we had access, SWC was also included. Earlier models also included categorized NEE states and calculated lags on these as well, but it was determined that these previous NEE states soaked up most of the importance from other variables because of autocorrelation and were thus removed. If you are interested in these older models, refer to the section on previous models. 
 
+### Run RF models.
+Most recently, imbalanced Random Forest classification models were ran across all sights using the package randomForestSRC(). These were run in Monsoon, and the code for such can be found in the Monsoon file. The following models were ran and their names they are referred to throughout file titles:
+- (1) Strong sink on in-season data (not relevant output, but available nonetheless) - **sink.in**
+- (2) Strong sink on out-of-season data - **sink.out**
+- (3) Strong sink on combined season data - **sink.all**
+- (4) Strong source on in-season data - **source.in**
+- (5) Strong source on out-of-season data - **source.out**
+- (6) Strong source on combined season data - **source.all**
+- (7) Inactive on in-season data (not relevant output, definition of inactive ruined by def of in-season) - **inactive.in**
+- (8) Inactive on out-of-season data (definition taken to extreme inactives by def of out-of-season) - **inactive.out**
+- (9) Inactive on combined season data - **inactive.all**
+
+For each of these models, there exists the following files:
+- **model.R**: the R script for running the model
+- **model.sh**: the shell script to run model.R in Monsoon
+- **model.results.R OR .RData OR .rds**: The saved model output. There was problems with Monsoon producing corrupted files, so some are saved in different formats.
+- **model.results.csv**: The output of interest organized and exported into a csv.
