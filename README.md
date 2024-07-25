@@ -68,4 +68,8 @@ For each of these models, there exists the following files:
 ## Analysis
 
 ## Previous Models
+There were many different models run prior to the most recent here. Below is a general flow of the models that were ran, and the differences between them. Please use these as a reference to the train of thought leading up to our current approach and to see definitions/approaches/techniques that were tried and determined to be inconsistent with our objectives as specific research questions were refined.
+
+This is the general idea workflow from model to model. Some intermediary models may be ommitted. As much of the code, functions, and results were compiled for each (that I could find) and organized. The info tab of the old_models contains a filename directory to help you navigate which files belong to which model versions.
+
 
