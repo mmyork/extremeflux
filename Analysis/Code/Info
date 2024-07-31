@@ -2,7 +2,7 @@ These are the R scripts that I used to analyze my code and make my graphs.
 The code here was adapted from the analysis code used from previous models,
 so it can be easily edited for any new models.
 
-
+flux2015.model = This is all the data preprocessing to create bindat!
 source.all.Anaylsis, source.out.Analysis, inactive.all.Analysis = Recent Case12 analysis examples
 exploreData = Original acquitance and exploration of data PRIOR to running the first models.
 groupedVar = Example of running grouped variable importances for any of these models.
