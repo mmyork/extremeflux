@@ -1,3 +1,9 @@
 These are the R scripts that I used to analyze my code and make my graphs.
 The code here was adapted from the analysis code used from previous models,
 so it can be easily edited for any new models.
+
+
+source.all.Anaylsis, source.out.Analysis, inactive.all.Analysis = Recent Case12 analysis examples
+exploreData = Original acquitance and exploration of data PRIOR to running the first models.
+groupedVar = Example of running grouped variable importances for any of these models.
+timescale_analysis, type_analysis = Examples of analyzing grouped variable importances.
