@@ -13,8 +13,8 @@ Increasing frequency of climate extremes requires improved understanding of extr
 With current results:
 - Create 2D partial dependence plots that look at current temperature at different categorical levels of year-lagged temperature. Seperately, their PDP's show opposite patters, which could point to photosynthetic acclimation OR just site differentiation.
 Before rerunning models:
-- (1) Removing additional dates discovered that need to be dropped from the data.
-- (2) Add the PRISM climate averages for each site in order to remove 365 lag importance soaking up site differentiation.
+- (1) ~~Removing additional dates discovered that need to be dropped from the data.~~
+- (2) ~~Add the PRISM climate averages for each site in order to remove 365 lag importance soaking up site differentiation~~
 - (3) Redefine growing season using historical average so that each year has only one growing season. Will need to rewrite historical season splitting function.
 - (4) Redefine inactive state with hard threshold set for both GPP and Reco. Will need to rewrite inactive function.
 - (5) Include SWC in the data.
